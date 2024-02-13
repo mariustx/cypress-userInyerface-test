@@ -1,1 +1,7 @@
 test
+    all steps in all pages
+    element exists and can be clicked
+        have elements/classes as expected
+        text/color/so on
+    field to be clickable, to be able to enter text
+    images to exist

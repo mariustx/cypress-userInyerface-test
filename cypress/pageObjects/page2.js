@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import { clearThenTypeOnElement, clickOnElement, typeOnElement } from "./generalActions";
+import { openFileDialog } from "./workaround";
 
 const poniesCheckbox = ":nth-child(1) > div > .checkbox > .checkbox__label > .checkbox__box > .icon";
 const enveloppesCheckbox = ":nth-child(8) > div > .checkbox > .checkbox__label > .checkbox__box > .icon";
@@ -17,6 +18,7 @@ export function completePage2() {
   clickOnElement(closetsCheckbox)
   //clickOnElement(downloadButton)
   //clickOnElement(uploadLink)
+  openFileDialog()
   cy.wait(7500);
   clickOnElement(nextButton)
 

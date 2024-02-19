@@ -1,4 +1,6 @@
-import { verifyLogoIsVisible } from "./startPage";
+/// <reference types="Cypress" />
+
+import { verifyLogoIsVisible } from "../../pageObjects/startPage";
 
 const firstParagraphText = 'Hi and welcome to User Inyerface, a challenging exploration of user interactions and design patterns.';
 const secondParagraphText = 'To play the game, simply fill in the form as fast and accurate as possible.';

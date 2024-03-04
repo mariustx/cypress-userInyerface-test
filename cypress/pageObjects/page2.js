@@ -16,10 +16,25 @@ export function completePage2() {
   clickOnElement(poniesCheckbox)
   clickOnElement(enveloppesCheckbox)
   clickOnElement(closetsCheckbox)
-  //clickOnElement(downloadButton)
-  //clickOnElement(uploadLink)
-  openFileDialog()
-  cy.wait(7500);
+  clickOnElement(downloadButton)
+  clickOnElement(uploadLink)
   clickOnElement(nextButton)
+
+  /*
+  cy.get(uploadLink).then(($element) => {
+    const rect = $element[0].getBoundingClientRect();
+    const x = rect.left + window.scrollX;
+    const x1 = rect.right + window.scrollX;
+    const y = rect.top + window.scrollY;
+    const y1 = rect.bottom + window.scrollY;
+  
+    // Log the coordinates
+    cy.log(`Element X: ${x} -- ${x1}`);
+    cy.log(`Element Y: ${y} -- ${y1}`);
+  });
+  
+  //openFileDialog()
+  //cy.wait(7500);
+  */
 
 }

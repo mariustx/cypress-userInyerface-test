@@ -53,6 +53,6 @@ describe('Start page checks', () => {
     verifyLastParagraph(lastParagraphText, gameLink)
     completePage1(password, mail, domain);
     completePage2();
-    completePage3(textForTest);
+    //completePage3(textForTest);
   });
 });

@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import { typeOnElement } from "../../pageObjects/generalActions";
+import { verifyFooterLogoExists, verifyFooterLogoImageIsCorrect } from "../../pageObjects/generalActions";
 import { completePage1 } from "../../pageObjects/page1";
 import { completePage2 } from "../../pageObjects/page2";
 import { completePage3 } from "../../pageObjects/page3";
@@ -28,30 +28,36 @@ describe('Start page checks', () => {
   beforeEach(() => {
     visitStartPageUrl();
   });
-  /*
-    it('verifies if the logo is present', () => {
-      verifyLogoIsVisible();
-    });
-  
-    it('verifies if the first paragraph is correct', () => {
-      verifyFirstParagraphIsCorrect(firstParagraphText, greenColorRgb, fontSize24, fontWeight100);
-    });
-  
-    it('verifies if the second paragraph is correct', () => {
-      verifySecondParagraphIsCorrect(secondParagraphText, greenColorRgb, fontSize24, fontWeight100);
-    });
-  
-    it('verifies if start button can be clicked', () => {
-      verifyStartButtonIsClickable(whiteColorRgb, greenColorRgb)
-    });
-  
-    it('verifies the last paragraph', () => {
-      verifyLastParagraph(lastParagraphText, gameLink)
-    });*/
+/*
+  it('verifies if the logo is present', () => {
+    verifyLogoIsVisible();
+  });
 
-  it('completes page 1', () => {
+  it('verifies if the first paragraph is correct', () => {
+    verifyFirstParagraphIsCorrect(firstParagraphText, greenColorRgb, fontSize24, fontWeight100);
+  });
+
+  it('verifies if the second paragraph is correct', () => {
+    verifySecondParagraphIsCorrect(secondParagraphText, greenColorRgb, fontSize24, fontWeight100);
+  });
+
+  it('verifies if start button can be clicked', () => {
+    verifyStartButtonIsClickable(whiteColorRgb, greenColorRgb)
+  });
+
+  it('verifies the last paragraph', () => {
     verifyLastParagraph(lastParagraphText, gameLink)
+  });
+*/
+  it('completes page 1', () => {
+    verifyFooterLogoExists();
+    verifyFooterLogoImageIsCorrect();
+    verifyLastParagraph(lastParagraphText, gameLink)
+    verifyFooterLogoExists();
+    verifyFooterLogoImageIsCorrect();
     completePage1(password, mail, domain);
+    verifyFooterLogoExists();
+    verifyFooterLogoImageIsCorrect();
     completePage2();
     //completePage3(textForTest);
   });

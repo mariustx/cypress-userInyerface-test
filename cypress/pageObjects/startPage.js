@@ -1,5 +1,3 @@
-import { checkElementIsVisible, checkElementContainsText, checkColorOfElement, checkFontSizeOfElement, checkFontWeightOfElement, checkBackgroundColorOfElement, clickOnElement, checkInvokeAttrib } from "./generalActions";
-
 const startPageUrl = "https://userinyerface.com/";
 
 const logoIcon = ".logo__icon";
@@ -10,7 +8,8 @@ const lastParagraph = ":nth-child(4) > p";
 const startLink = ".start__link";
 
 export function visitStartPageUrl() {
-    let currentUrl;
+    cy.visit(startPageUrl);
+    /*let currentUrl;
 
     cy.visit(startPageUrl)
         .then(() => {
@@ -18,40 +17,51 @@ export function visitStartPageUrl() {
             cy.url().then((url) => {
                 currentUrl = url;
             });
-        });
-
+        });*/
     // Now 'currentUrl' contains the URL you visited
     // You can use it later in your test
 }
 
 export function verifyLogoIsVisible() {
-    checkElementIsVisible(logoIcon);
+    cy.get(logoIcon)
+        .should('be.visible');
 }
 
 export function verifyFirstParagraphIsCorrect(text, colorInRgb, fontSizeInPx, fontWeightAsNumber) {
-    checkElementContainsText(firstParagraph, text);
-    checkColorOfElement(firstParagraph, colorInRgb);
-    checkFontSizeOfElement(firstParagraph, fontSizeInPx);
-    checkFontWeightOfElement(firstParagraph, fontWeightAsNumber);
+    cy.get(firstParagraph).contains(text);
+    cy.get(firstParagraph)
+        .should('have.css', 'color', colorInRgb);
+    cy.get(firstParagraph)
+        .should('have.css', 'font-size', fontSizeInPx);
+    cy.get(firstParagraph)
+        .should('have.css', 'font-weight', fontWeightAsNumber);
 }
 
 export function verifySecondParagraphIsCorrect(text, colorInRgb, fontSizeInPx, fontWeightAsNumber) {
-    checkElementContainsText(secondParagraph, text);
-    checkColorOfElement(secondParagraph, colorInRgb);
-    checkFontSizeOfElement(secondParagraph, fontSizeInPx);
-    checkFontWeightOfElement(secondParagraph, fontWeightAsNumber);
+    cy.get(secondParagraph).contains(text);
+    cy.get(secondParagraph)
+        .should('have.css', 'color', colorInRgb);
+    cy.get(secondParagraph)
+        .should('have.css', 'font-size', fontSizeInPx);
+    cy.get(secondParagraph)
+        .should('have.css', 'font-weight', fontWeightAsNumber);
 }
 
 export function verifyStartButtonIsClickable(colorInRgb, backgroundColorInRgb) {
-    checkElementIsVisible(startButton);
-    checkColorOfElement(startButton, colorInRgb);
-    checkBackgroundColorOfElement(startButton, backgroundColorInRgb);
-    clickOnElement(startButton);
+    cy.get(startButton)
+        .should('be.visible');
+    cy.get(startButton)
+        .should('have.css', 'color', colorInRgb);
+    cy.get(startButton)
+        .should('have.css', 'background-color', backgroundColorInRgb);
+    cy.get(startButton).click();
 }
 
 export function verifyLastParagraph(text, link) {
-    checkElementIsVisible(lastParagraph);
-    checkElementContainsText(lastParagraph, text);
-    checkInvokeAttrib(startLink, link)
-    clickOnElement(startLink);
+    cy.get(lastParagraph)
+        .should('be.visible');
+    cy.get(lastParagraph).contains(text);
+    cy.get(startLink).invoke('attr', 'href')
+        .should('eq', link);
+    cy.get(startLink).click();
 }

@@ -1,7 +1,3 @@
-/// <reference types="Cypress" />
-
-import { clearThenTypeOnElement, clickOnElement, typeOnElement } from "./generalActions";
-
 const firstName = ":nth-child(1) > :nth-child(1) > .personal-details__property-item-table > .personal-details__property-item-tr-row > .personal-details__td-value > .input";
 const title = ":nth-child(1) > .personal-details__property-item-table > .personal-details__property-item-tr-row > .personal-details__td-value > .dropdown > .dropdown__header > .dropdown__field";
 const titleMrs = ":nth-child(1) > .personal-details__property-item-table > .personal-details__property-item-tr-row > .personal-details__td-value > .dropdown > .dropdown__list > :nth-child(2)";
@@ -19,17 +15,22 @@ const sendToBottomButton = ".u-right > .button";
 const nextButton = ".personal-details__bottom-button-container > .align > :nth-child(1) > .button";
 
 export function completePage3(text) {
-  clearThenTypeOnElement(firstName, text)
-  clickOnElement(title)
-  clickOnElement(titleMrs)
-  clearThenTypeOnElement(lastName, text)
-  clickOnElement(country)
-  clickOnElement(countryAf, { force: true })
-  clearThenTypeOnElement(street, text)
-  clearThenTypeOnElement(zipPostal, text)
-  clearThenTypeOnElement(city, text)
-  clickOnElement(sendToBottomButton)
-  cy.wait(3000)
-  clickOnElement(nextButton, { force: true })
+  cy.get(firstName).clear()
+    .type(text);
+  cy.get(title).click();
+  cy.get(titleMrs).click();
+  cy.get(lastName).clear()
+    .type(text);
+  cy.get(country).click();
+  cy.get(countryAf, { force: true }).click();
+  cy.get(street).clear()
+    .type(text);
+  cy.get(zipPostal).clear()
+    .type(text);
+  cy.get(city).clear()
+    .type(text);
+  cy.get(sendToBottomButton).click();
+  cy.wait(3000);
+  cy.get(nextButton, { force: true }).click();
 
 }

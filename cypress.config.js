@@ -1,5 +1,4 @@
 const { defineConfig } = require('cypress');
-const CDP = require('chrome-remote-interface');
 
 module.exports = defineConfig({
   e2e: {

@@ -1,5 +1,3 @@
-import { clearThenTypeOnElement, clickOnElement, typeOnElement } from "./generalActions";
-
 const passwordField = ":nth-child(2) > .input";
 const emailField = ":nth-child(1) > .input";
 const domainField = ":nth-child(3) > .input";
@@ -9,11 +7,14 @@ const termsConditionsCheckbox = ".checkbox__box > .icon";
 const nextButton = ":nth-child(1) > .button--secondary";
 
 export function completePage1(password, email, domain) {
-    clearThenTypeOnElement(passwordField, password)
-    clearThenTypeOnElement(emailField, email)
-    clearThenTypeOnElement(domainField, domain)
-    clickOnElement(domainLevelDropDown)
-    clickOnElement(domainLevelOption1)
-    clickOnElement(termsConditionsCheckbox)
-    clickOnElement(nextButton)
+    cy.get(passwordField).clear()
+        .type(password);
+    cy.get(emailField).clear()
+        .type(email);
+    cy.get(domainField).clear()
+        .type(domain);
+    cy.get(domainLevelDropDown).click();
+    cy.get(domainLevelOption1).click();
+    cy.get(termsConditionsCheckbox).click();
+    cy.get(nextButton).click();
 }
